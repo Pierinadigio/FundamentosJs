@@ -81,11 +81,65 @@ const Silvio = {
         edad: 44,
         direccion: {
             calle: 'Casacuberta',
-            numero: 1760
+            nro: 1760
         }
     }
 
    
 }
 
-const {madre} = mascota
+const { direccion: { calle, nro } } = Silvio.madre;
+
+
+console.log("calle madre " + calle)
+console.log("nro madre " + nro)
+//-------------------------
+
+const web = {
+    nombre: "nombre web",
+    links: {
+        enlace: ''
+
+    },
+    redesociales: {
+        youtube: {
+            enlace: "lalalla/xx",
+            name: "cccapp"
+        },
+        facebook: {
+            enlace: "llla/xx",
+            name: "app"
+
+        }
+    }
+}
+
+console.log(web.redesociales.youtube.name)//acedo al nombre
+const {name} = web.redesociales.youtube/// accedo con destructuring
+console.log(name)
+
+// FETCH API
+// API Fetch en JavaScript. La API Fetch se utiliza para realizar peticiones HTTP y trabajar con respuestas.
+//Provee un metodo global fetch() que proporciona una forma f'acil y logica de 
+//obtener recursos de forma asincronica en la red
+//Con fetch () podemos consumir una API(respuesta ser servidor que nos entrega datos para consumir en nuestro situi web)
+
+//fetch a la URL del recurso que voy a consumir
+// fetch ('URL')
+        //espero una respuesta ()=>-Los datos que devuelve son en formato JSON
+  /*      /*como la respuesta es solo un parametro puedo sacar )()
+    .then( respuesta  =>{
+        la respuesta la retorne en formato Json
+        return respuesta.json()
+
+    })*/
+     /*es lo mismo que */
+
+     fetch ('https://pokeapi.co/api/v2/pokemon/')
+        .then ( respuesta => respuesta.json())
+        //lo que me devuelve en formato json, la data la muestro en la consola.. cada uno de los nombres del arreglo "results"
+        .then ( data => {
+                data.results.forEach(element => {
+                    console.log(element.name)
+                });
+        })
