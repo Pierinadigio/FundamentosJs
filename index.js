@@ -85,7 +85,7 @@ const Silvio = {
         }
     }
 
-
+   
 }
 
 const {madre} = mascota
