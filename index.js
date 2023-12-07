@@ -88,4 +88,4 @@ const Silvio = {
 
 }
 
-const {madre.direccion} = mascota
+const {madre} = mascota
