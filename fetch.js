@@ -68,10 +68,77 @@
                           console.error('Error:', error);
                         });
             //Después de hacer la solicitud, encadenas .then() para manejar la respuesta. 
-            /*Puedes utilizar .json() para analizar la respuesta como JSON (esto devuelve otra promesa).
+            /*Puedes utilizar .json() para analizar la respuesta como JSON (esto devuelve otra promesa).*/
          //Luego, puedes encadenar otro .then() para hacer algo con los datos analizados.
         //También puedes encadenar .catch() para manejar cualquier error que ocurra durante la solicitud.            
         //verificar el estado de la respuesta dentro del primer .then() y lanzar un error si es necesario.
         
-        //ASYNC AWAIT
-    /*La declaracion de funcion async define una funcion asincronica que devuelve un objeto  AsyncFunction*/
+        // Realizar una solicitud DELETE 
+                        fetch(apiUrl, {
+                            method: 'DELETE', // Especifica que es una solicitud DELETE
+                            headers: {
+                                // Puedes agregar encabezados según sea necesario
+                            },
+                            // Puedes incluir un cuerpo (body) si es necesario, pero las solicitudes DELETE generalmente no tienen un cuerpo
+                            })
+                            .then(response => {
+                                if (!response.ok) {
+                                throw new Error('Error en la solicitud DELETE');
+                                }
+                                // No hay datos para analizar en una solicitud DELETE exitosa
+                                return response.json(); // o return response.text(); dependiendo de lo que esperas recibir
+                            })
+                            .then(data => {
+                                // Hacer algo con los datos si es necesario
+                            })
+                            .catch(error => {
+                                // Manejar errores
+                                console.error('Error:', error);
+                            });
+            
+            // Para una solicitud PUT
+                            fetch(apiUrl, {
+                                method: 'PUT',
+                                headers: {
+                                'Content-Type': 'application/json', // Ajusta según sea necesario
+                                // Otros encabezados si es necesario
+                                },
+                                body: JSON.stringify({ /* Datos de actualización */ }),
+                            })
+                                .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error en la solicitud PUT');
+                                }
+                                return response.json(); // o return response.text(); dependiendo de la respuesta esperada
+                                })
+                                .then(data => {
+                                // Manejar la respuesta si es necesario
+                                })
+                                .catch(error => {
+                                // Manejar errores
+                                console.error('Error:', error);
+                                });
+                            
+            // Para una solicitud PATCH para actualizar recursos en un servidor.
+                            fetch(url, {
+                                method: 'PATCH',
+                                headers: {
+                                'Content-Type': 'application/json', // Ajusta según sea necesario
+                                // Otros encabezados si es necesario
+                                },
+                                body: JSON.stringify({ /* Datos de actualización */ }),
+                            })
+                                .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Error en la solicitud PATCH');
+                                }
+                                return response.json(); // o return response.text(); dependiendo de la respuesta esperada
+                                })
+                                .then(data => {
+                                // Manejar la respuesta si es necesario
+                                })
+                                .catch(error => {
+                                // Manejar errores
+                                console.error('Error:', error);
+                                });                
+        
